@@ -35,7 +35,7 @@ while IFS= read -r cmd || [ -n "$cmd" ]; do
   # Ejecutar el comando.
   # Usamos eval para interpretar correctamente la sintaxis del comando guardado.
   # 2>&1 redirige los errores al mismo archivo para que no te pierdas nada.
-  eval "$cmd" >>"$OUTPUT_FILE" 2>&1
+  eval "$cmd" 2>&1 | tee -a "$OUTPUT_FILE"
 
   echo -e "\e[1;32m[*] Terminado.\e[0m"
   echo "ESTADO: Finalizado" >>"$OUTPUT_FILE"
